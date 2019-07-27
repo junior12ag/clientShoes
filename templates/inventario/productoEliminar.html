@@ -1,0 +1,11 @@
+{% extends 'base/base.html' %}
+
+{% block cuerpo %}
+
+<form method="POST"action=''>
+    {% csrf_token %}
+    <h2>Esta seguro que desea eliminar el producto {{ producto.marca }} {{ producto.modelo }}</h2>
+    <button class="btn bnt-danger" type="submit">Si, eliminar</button>
+    <a class="btn bnt-default" href="{% url 'productoList' %}">Cancelar</a>
+</form>
+{% endblock %}

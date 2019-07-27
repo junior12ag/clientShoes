@@ -1,0 +1,65 @@
+{% extends 'base/base.html' %}
+
+{% block cuerpo %}
+
+
+<a href="{% url 'nuevoProducto' %}" type='button' class="btn btn-primary">Agregar Producto</a>
+<a href="{% url 'nuevaMarca' %}" type='button' class="btn btn-primary">Agregar Marca</a>
+<a href="{% url 'nuevaCategoria' %}" type='button' class="btn btn-primary">Agregar Categoria de Producto</a>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <td>Codigo</td>
+            <td>Marca</td>
+            <td>Imagen</td>
+            <td>Modelo</td>
+            <td>Color</td>
+            <td>Size</td>
+            <td>Categoria</td>
+            <td>Cantidad Disponible</td>
+            <td>Precio de Compra</td>
+            <td>Precio de Venta</td>
+            <td>Descripcion</td>
+            <td>Acciones</td>
+        </tr>
+    </thead>
+    <tbody>
+        {% if productos %}
+        {% for producto in productos %}
+        <tr>
+            <td>{{ producto.codigoIQ }}</td>
+            <td>{{producto.marca}}</td>
+            <td>
+                {% if producto.imagen %}
+                <img src="{{producto.imagen.url}}" alt="" class="img-fluid">
+                {% endif %}
+            </td>
+            <td>{{producto.modelo}}</td>
+            <td>{{producto.color}}</td>
+            <td>{{producto.size}}</td>
+            <td>{{producto.categoria}}</td>
+            <td>{{producto.cantidad}}</td>
+            <td>{{producto.precio_compra}}</td>
+            <td>{{producto.precio_venta}}</td>
+            <td>{{producto.descripcion}}</td>
+            <td>
+                <a class="btn btn-secundary" href="{% url 'editarProducto' producto.codigoIQ %}">Editar</a>
+                <a class="btn btn-secundary" href="{% url 'eliminarProducto' producto.codigoIQ %}">Eliminar</a>
+            </td>
+          {% endfor %}
+
+          {% else %}
+          <h1>No existe productos registrados</h1>
+          {% endif %}
+
+        </tr>
+
+    </tbody>
+
+
+
+</table>
+
+
+
+{% endblock %}
