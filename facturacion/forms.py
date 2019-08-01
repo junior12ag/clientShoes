@@ -7,7 +7,7 @@ class DateInput(forms.DateInput):
 class FacturaForm(forms.ModelForm):
     class Meta:
         model = Factura
-        exclude =[]
+        exclude =['numero_factura']
     
     fields = [
 

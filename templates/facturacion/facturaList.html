@@ -1,0 +1,49 @@
+{% extends 'base/base.html' %}
+
+{% block cuerpo %}
+
+
+<a href="{% url 'facturar' %}" type='button' class="btn btn-primary">Crear factura</a>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <td>Numero de Factura</td>
+            <td>Productos</td>
+            <td>Fecha</td>
+            <td>Impuesto</td>
+            <td>Total</td>
+            <td>Cliente</td>
+            <td>Acciones</td>
+        </tr>
+    </thead>
+    <tbody>
+        {% if facturas %}
+        {% for factura in facturas %}
+        <tr>
+            <td>{{ factura.numero_factura }}</td>
+            <td>{{ factura.productos }}</td>
+            <td>{{factura.fecha}}</td>
+            <td>{{factura.impuesto}}</td>
+            <td>{{factura.total}}</td>
+            <td>{{factura.cliente}}</td>
+            <td>
+                <a class="btn btn-secundary" href="">Pagar</a>
+                <a class="btn btn-secundary" href="">Cancelar</a>
+            </td>
+          {% endfor %}
+
+          {% else %}
+          <h1>No existe facturas registrados</h1>
+          {% endif %}
+
+        </tr>
+
+    </tbody>
+
+
+
+</table>
+
+
+
+{% endblock %}
