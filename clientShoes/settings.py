@@ -106,7 +106,12 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 REST_FRAMEWORK = {
-    'PAGE_SIZE' : 100
+    'PAGE_SIZE' : 100,
+    'DEFAULT_PARSER_CLASSES': (
+        'rest_framework.parsers.JSONParser',
+        'rest_framework.parsers.FormParser',
+    ),
+     'DATETIME_FORMAT': "%m/%d/%Y",
 }
 
 # Internationalization

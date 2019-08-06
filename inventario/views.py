@@ -40,6 +40,11 @@ def productoEliminar_view(request, codigo):
         return redirect('productoList')
     return render(request, 'inventario/productoEliminar.html', {'producto': producto })
 
+def productoDetalle_view(request, codigo):
+    productos = Producto.objects.get(codigoIQ=codigo)
+    return render(request, 'inventario/productoDetalle.html', {'productos' : productos })
+
+
 
 def productoList_view(request):
     productos = Producto.objects.all().order_by('codigoIQ')
@@ -71,6 +76,22 @@ def agregarCategoria_view(request):
 class ProductoListRest(generics.ListCreateAPIView):
     queryset = Producto.objects.all()
     serializer_class = ProductoSerializer
+
+    def get_object(self):
+        queryset = self.get_queryset()
+        obj = get_object_or_404(queryset, pk=self.kwargs['pk'],)
+        return obj
+
+class ProductoDetalleRest(generics.ListCreateAPIView):
+ #   queryset = Producto.objects.get(codigoIQ=self.kwargs['codigo'])
+    serializer_class = ProductoSerializer
+    lookup_url_kwarg = "codigoIQ"
+
+    def get_queryset(self):
+        uid = self.kwargs.get(self.lookup_url_kwarg)
+        respuesta = Producto.objects.filter(codigoIQ=uid)
+        return respuesta
+
 
     def get_object(self):
         queryset = self.get_queryset()

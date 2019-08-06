@@ -10,4 +10,6 @@ urlpatterns = [
     path('editarProducto/<int:codigo>/', login_required(views.productoActualizar_view), name='editarProducto'),
     path('eliminarProducto/<int:codigo>/', login_required(views.productoEliminar_view), name='eliminarProducto'),
     path('restList', views.ProductoListRest.as_view(), name='restListAll'),
+    path('detalle/<int:codigo>/', views.productoDetalle_view, name='detalle'),
+    path('detalleRest/', views.ProductoDetalleRest, name='detalleRest'),
 ]

@@ -8,10 +8,10 @@ from datetime import datetime
 class Factura(models.Model):
     numero_factura = models.AutoField(primary_key=True)
     productos = models.ForeignKey(Producto, on_delete=models.CASCADE)
-    fecha = models.DateField(("Date"), default=datetime.date)
+    fecha = models.CharField(max_length=15, null=True)
     impuesto = models.IntegerField()
     total = models.IntegerField()
-    cliente = models.OneToOneField(User, on_delete=models.CASCADE)
+    cliente = models.CharField(max_length=15, null=True)
 
     def __str__(self):
-        return str(self.total)
+        return str(self.numero_factura)
