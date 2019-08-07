@@ -17,6 +17,7 @@ class ProductoSerializer(serializers.ModelSerializer):
     class Meta:
         model = Producto
         fields = [
+        'codigoIQ',
         'imagen',
         'marca',
         'modelo',
