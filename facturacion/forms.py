@@ -27,7 +27,8 @@ class FacturaForm(forms.ModelForm):
     }
 
     widgets = {
-        'productos' : forms.CheckboxSelectMultiple(),
+ #       'productos' : forms.CheckboxSelectMultiple(),
+        'productos' : forms.SelectMultiple(attrs={'class': 'form-control'}),
         'fecha': forms.DateField(widget=DateInput),
         'impuesto' : forms.TextInput(attrs={'class' : 'form-control'}),
         'total' : forms.TextInput(attrs={'class' : 'form-control'}),

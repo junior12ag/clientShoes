@@ -17,7 +17,7 @@ def facturaView(request):
         return redirect('facturaList')
     else:
         form = FacturaForm
-    return render(request, 'facturacion/factura.html', {'form': form}) 
+    return render(request, 'facturacion/facturaForm.html', {'form': form}) 
 
 
 class FacturaRest(generics.ListCreateAPIView):

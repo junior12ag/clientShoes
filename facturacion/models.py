@@ -7,7 +7,7 @@ from datetime import datetime
 
 class Factura(models.Model):
     numero_factura = models.AutoField(primary_key=True)
-    productos = models.ForeignKey(Producto, on_delete=models.CASCADE)
+    productos = models.ManyToManyField(Producto)
     fecha = models.CharField(max_length=15, null=True)
     impuesto = models.IntegerField()
     total = models.IntegerField()
